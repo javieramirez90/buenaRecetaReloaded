@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const passport = require('passport')
 const multer = require('multer')
-const upload = multer({dest: './public/assets'})
 const uploadCloud = require('../helpers/cloudinary')
 
 const User = require('../models/User')
@@ -27,6 +26,7 @@ function isLoggedIn(req, res, next){
 router.post('/signup', (req, res) => {
   if(req.body.password !== req.body.password2){
     req.body.err = "Tu password no coincide, vuelve a intentarlo."
+    res.json(...req.body)
   }else {
     User.register(req.body, req.body.password)
       .then(user => {
