@@ -4,6 +4,7 @@ import WrappedNormalLoginForm from './components/auth/Login';
 import WrappedNormalSignupForm from './components/auth/Signup';
 import Home from './components/layout/Home';
 import Profile from './components/auth/Profile';
+import Recipes from './components/core/Recipes';
 
 export default (props) =>{
 
@@ -16,6 +17,7 @@ return(
     <Route path="/login" render={(props) => <WrappedNormalLoginForm catched={catched}  {...props}  />} />
     <Route path="/signup" component={WrappedNormalSignupForm} />
     <Route path="/profile" render={(props) => <Profile  user = {user} {...props} />} />
+    <Route exact path="/allRecipes" component={Recipes} />
   </Switch>
 )
   }

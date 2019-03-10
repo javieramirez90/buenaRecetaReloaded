@@ -7,7 +7,7 @@ export default function Profile(props) {
   let { recipes } = props.user
   console.log(recipes)
 
-  let ownRecipesList = recipes.ownCreation.map(recipe => {
+  let ownRecipesList = () => recipes.ownCreation.map(recipe => {
     return(
     <li>
       <img src={recipe.photoURL} alt={recipe.name}/>
@@ -23,7 +23,7 @@ export default function Profile(props) {
         <img src={user.photoURL} alt={user.username + "photo"}/>
         <h1>Bienvenido {user.username}</h1>
         <ul>Mis recetas:
-          ownRecipesList      
+          { ownRecipesList }
         </ul>
       </div>
     )

@@ -1,9 +1,9 @@
 const express = require('express')
-const router = express.router()
+const router = express.Router()
+const Recipe = require('../models/Recipe')
 const uploadCloud = '../helpers/cloudinary.js'
 const User = '../models/User.js'
 const ShoppingCart = '../models/ShoppingCart.js'
-const Recipe = '../models/Recipe.js'
 
 function isAuth(){
   if(req.isAuthenticated()){
@@ -20,7 +20,16 @@ function isLoggedIn(req, res, next) {
   }
 }
 
-router.get('/', (req, res) => {
-  res.status(200).json(req.user)
+//GET ALL RECIPES
+router.get('/allRecipes', (req, res, next) => {
+  Recipe.find()
+   .then(recipes => {
+     res.status(200).json(recipes)
+    })
 })
 
+// router.get('/', (req, res) => {
+//   res.status(200).json(req.user)
+// })
+
+module.exports = router
