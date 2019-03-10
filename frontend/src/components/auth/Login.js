@@ -26,6 +26,7 @@ class NormalLoginForm extends Component {
     console.log(auth)
     axios.post(url, auth, {withCredentials: true})
     .then(data => {
+      console.log("The data I send", data)
       this.props.catched(data)
       this.props.history.push('/profile')
     })

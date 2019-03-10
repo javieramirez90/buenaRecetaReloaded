@@ -6,25 +6,27 @@ const recipeSchema = new Schema({
     type: String,
     default: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTogKQLDiKxPppc6st0pctrj_n89TobtWmG1o74HzJ3wQBZEwXfew"
   },
-  nombre: {
+  name: {
     type:String,
     required:true
   },
-  ingredientes:  [
+  ingredients:  [
     {
       type:String,
       required:true
     }
   ],
-  categoria: {
-    type: String,
-    enum: ['Postre','Ensalada', 'Plato fuerte', 'Sopas y caldos', 'Vegetariano', 'Entradas']
-  },
-  preparacion: {
+  category: [
+    {
+      type: String,
+      enum: ['Postre','Ensalada', 'Plato fuerte', 'Sopas y caldos', 'Vegetariano', 'Entradas']
+    }
+  ],
+  preparationInstructions: {
     type: String,
     required:true
   },
-  usuario: {
+  owner: {
     type: Schema.Types.ObjectId,
     ref:"User"
   }
@@ -32,4 +34,4 @@ const recipeSchema = new Schema({
   timestamps: true
 })
 
-module.exports = mongoose.Schema('Recipe', recipeSchema)
+module.exports = mongoose.model('Recipe', recipeSchema)

@@ -24,7 +24,3 @@ router.get('/', (req, res) => {
   res.status(200).json(req.user)
 })
 
-router.get('/profile', isLoggedIn, (req, res) => {
-  let {user} = req
-  res.status(200).json({message: `Bienvenido ${user.name}`, user})
-})

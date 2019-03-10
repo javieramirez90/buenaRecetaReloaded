@@ -9,21 +9,29 @@ import Router from './Router';
 class App extends Component {
 
   state={
-    user: {}
+    user: {},
+    logged: false
   }
 
-  catchForGlobalState = (data) => {
-    this.setState({user: data.user})
-    console.log("es aquí donde hago magia")
+  componentDidUpdate() {
+    console.log("Más mágia", this.state.user)
+  }
 
+  catchForGlobalState = (res) => {
+    console.log(res.data)
+    let { user } = res.data
+    console.log("Sólo para no errar", user)
+    this.setState({user, logged: true})
+    console.log("es aquí donde hago magia")
   }
 
   render() {
+    let { user } = this.state
     return (
       <div className="App">
         <Navbar /> 
         <div className="Env">
-        <Router catched={this.catchForGlobalState}/>
+        <Router user={ user } catched={this.catchForGlobalState}/>
         {/* <video autoPlay loop className="video-background" muted playsInline src="https://res.cloudinary.com/dtciysqlf/video/upload/v1552173217/buenaReceta/BuenaRecetaVideo.mp4"></video> */}
         </div>
         <Foooter />

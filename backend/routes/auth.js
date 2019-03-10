@@ -57,5 +57,10 @@ router.get('/logout', (req, res) => {
   })
 })
 
+router.get('/profile', isAuth, (req, res) => {
+  let {user} = req
+  res.status(200).json({message: `Bienvenido ${user.username}`, user})
+})
+
 
 module.exports = router

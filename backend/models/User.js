@@ -4,9 +4,18 @@ const passportLocalMongoose = require('passport-local-mongoose')
 const populate = require('../helpers/fillAllRefs')
 
 const userSchema = new Schema({
+  photoURL: {
+    type: String,
+    default: "https://res.cloudinary.com/dtciysqlf/image/upload/v1552192812/buenaReceta/userLogo.png"
+  },
   username: {
     type: String,
     required: true
+  },
+  role: {
+    type: String,
+    enum: ["admin", "client"],
+    default: "client"
   },
   email: {
     type: String,
