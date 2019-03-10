@@ -14,6 +14,7 @@ class App extends Component {
 
   catchForGlobalState = (data) => {
     this.setState({user: data.user})
+    console.log("es aquí donde hago magia")
 
   }
 
@@ -23,6 +24,7 @@ class App extends Component {
         <Navbar /> 
         <div className="Env">
         <Router catched={this.catchForGlobalState}/>
+        {/* <video autoPlay loop className="video-background" muted playsInline src="https://res.cloudinary.com/dtciysqlf/video/upload/v1552173217/buenaReceta/BuenaRecetaVideo.mp4"></video> */}
         </div>
         <Foooter />
       </div>

@@ -36,7 +36,7 @@ class NormalLoginForm extends Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <Form onSubmit={this.sendToServer} className="login-form">
-        <PageHeader title="Iniciar sesión" fontSize={25}/> 
+        <PageHeader title="Iniciar sesión"/> 
         <Form.Item>
           {getFieldDecorator('email', {
             rules: [{ required: true, message: 'Please input your username!' }],

@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   height: 100vh;
+  overflow-y: scroll;
   
 }
 
@@ -64,11 +65,50 @@
 }
 
 .theNav {
-
+  background-color: #FF9801;
 }
 
 .theFooter {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
 }
+
+/* The only rule that matters */
+.video-background {
+  /*  making the video fullscreen  */
+    position: fixed;
+    right: 0; 
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto; 
+    height: auto;
+    z-index: -100;
+  }
+
+  .homeBuenaReceta {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+  }
+
+  .presentationBuenaReceta {
+    height: 80vh;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .presentationBuenaReceta div {
+    background-color: rgba(250, 250, 250, .35);
+    width: 40%;
+    margin: 5%;
+  }
+  
+  
+
+  .taka {
+    height: 100vh;
+    width: 100%;  
+    background-color: rgba(0, 0, 0, .5  )
+  }

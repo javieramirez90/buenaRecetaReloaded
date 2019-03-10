@@ -46,8 +46,8 @@ const userSchema = new Schema({
 }, {
   timestamps: true
 })
-
-userSchema.plugin(passportLocalMongoose, {usernameField: 'email'})
 userSchema.plugin(populate)
+userSchema.plugin(passportLocalMongoose, {usernameField: 'email'})
+
 module.exports =  mongoose.model('User', userSchema)
 
