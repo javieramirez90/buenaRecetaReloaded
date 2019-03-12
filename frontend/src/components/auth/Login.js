@@ -11,6 +11,10 @@ class NormalLoginForm extends Component {
     auth: {},
     user: {}
   }
+
+  componentDidMount(){
+    console.log(this.props)
+  }
   
   handleChange = e => {
     let { auth } = this.state

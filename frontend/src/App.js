@@ -27,9 +27,10 @@ class App extends Component {
 
   render() {
     let { user } = this.state
+    let { logged } = this.state
     return (
       <div className="App">
-        <Navbar /> 
+        <Navbar isLogged={logged}/> 
         <div className="Env">
         <Router user={ user } catched={this.catchForGlobalState}/>
         {/* <video autoPlay loop className="video-background" muted playsInline src="https://res.cloudinary.com/dtciysqlf/video/upload/v1552173217/buenaReceta/BuenaRecetaVideo.mp4"></video> */}

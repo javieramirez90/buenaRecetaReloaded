@@ -29,7 +29,7 @@ export default class Recipes extends Component {
             return(
               <Link className="recipeCard" to={"/allRecipes/"+recipe._id}>
               <div >
-                <img style={{width: "150px", height: "150px" }} src={recipe.photoURL} alt={recipe.name + "photo"}/>
+                <img  src={recipe.photoURL} alt={recipe.name + "photo"}/>
                 <h4>{recipe.name}</h4>
                 <p>{recipe.category}</p>
               </div>
