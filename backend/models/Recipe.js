@@ -10,27 +10,36 @@ const recipeSchema = new Schema({
     type:String,
     required:true
   },
-  ingredients:  [
+  ingredients: [
     {
-      quantity: {
-        type: Number,
-        required:true
-      },
-      kind: {
-        type: String,
-        required: true
-      }
+      quantity: Number,
+      kind: String
     }
-  ],
+
+  ]
+  // ingredients:  {
+  //     quantity: {
+  //       type: Number,
+  //       required:true
+  //     },
+  //     kind: {
+  //       type: String,
+  //       required: true
+  //     }
+  //   }
+   
+      ,
   category: [
     {
       type: String,
-      enum: ['Postre','Ensalada', 'Plato fuerte', 'Sopas y caldos', 'Vegetariano', 'Entradas']
+      enum: ['Postre','Ensalada', 'Plato fuerte', 'Sopas y caldos', 'Vegetariano', 'Entradas'],
+      default: "Ensalada"
     }
   ],
   preparationInstructions: {
     type: String,
-    required:true
+    // required:true
+    default: "Not important right now"
   },
   owner: {
     type: Schema.Types.ObjectId,

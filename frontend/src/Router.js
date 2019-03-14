@@ -19,7 +19,7 @@ return(
     <Route path="/signup" component={WrappedNormalSignupForm} />
     <Route path="/profile" render={(props) => <Profile  user = {user} {...props} />} />
     <Route exact path="/allRecipes" component={Recipes} />
-    <Route exact path="/createRecipe" component={CreateRecipe} />
+    <Route exact path="/createRecipe" render={(props) => <CreateRecipe  user = {user} {...props} />} />
   </Switch>
 )
   }
