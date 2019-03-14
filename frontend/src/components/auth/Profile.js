@@ -2,10 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 export default function Profile(props) {
-  console.log(props)
   let { user } = props
   let { recipes } = props.user
-  console.log(recipes)
 
   let ownRecipesList = () => recipes.ownCreation.map(recipe => {
     return(
@@ -17,7 +15,7 @@ export default function Profile(props) {
     )
   })
 
-  if(recipes.ownCreation.length > 0){
+  if(recipes["ownCreation"].length < 0){
     return (
       <div>
         <img src={user.photoURL} alt={user.username + "photo"}/>

@@ -19,8 +19,6 @@ export default class CreateRecipe extends Component {
     let {ingredients ,newIngredient, recipe, photoURL } = this.state
     ingredients.push(newIngredient)
     recipe["ingredients"] = ingredients
-    // recipe["photoURL"] = photoURL
-    // console.log(ingredients)
     this.setState({ recipe, ingredients, newIngredient: {}})
   }
 
@@ -44,11 +42,7 @@ export default class CreateRecipe extends Component {
   sendToServer = e => {
     e.preventDefault()
     let url = "http://localhost:3000/createRecipe"
-    let { photoURL, recipe, ingredients} = this.state 
-    console.log(recipe)
-    // let formData = new FormData()
-    // // formData.append("recipe", recipe)
-    // formData.append("picture", photoURL)
+    let { photoURL, recipe } = this.state 
 
     axios({
       method: 'post',
@@ -59,15 +53,7 @@ export default class CreateRecipe extends Component {
         withCredentials:true
       
     })
-    // recipe["photoURL"] =photoURL
-    // let serviceUpload = axios.create({url, withCredentials: true})
-    // return serviceUpload.post(url, {
-		// 	headers: {
-		// 		'Content-Type': 'multipart/form-data',
-		// 	}
-		// })
       .then(res => {
-        console.log("Esta es la respuesta para la primer",res.data.newRecipe)
         let formData = new FormData()
         formData.append("picture", photoURL)
         formData.append("id", res.data.newRecipe._id)

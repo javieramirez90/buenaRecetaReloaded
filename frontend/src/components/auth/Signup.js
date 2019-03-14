@@ -19,8 +19,7 @@ class NormalSignupForm extends Component {
     
     if (user.password !== user.password2) errors.password = "Las contraseñas no coinciden"
     this.setState({ user, errors })
-    console.log(user)
-}
+  }
 
   sendToServer = e => {
     e.preventDefault();
@@ -28,7 +27,6 @@ class NormalSignupForm extends Component {
     let {user} = this.state
     axios.post(url, user) //, {withCredentials: true}
     .then(data => {
-      console.log(data)
       this.props.history.push('/login')
     })
     .catch(e => console.log(e))

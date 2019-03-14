@@ -14,7 +14,6 @@ export default class Recipes extends Component {
     let {recipes} = this.state
     axios.get(url)
       .then(res => {
-        console.log(res)
         recipes = res.data
         this.setState({recipes, anyRecipes: true})
       })
@@ -22,7 +21,6 @@ export default class Recipes extends Component {
   }
 
   render() {
-    let {anyRecipes} = this.state
           let {recipes} = this.state
           return(
           recipes.map(recipe => {

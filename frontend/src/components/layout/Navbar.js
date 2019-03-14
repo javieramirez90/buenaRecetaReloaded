@@ -6,7 +6,6 @@ import { Layout, Menu } from 'antd';
 const { Header } = Layout;
 
 const Navbar = (props) => {
-  console.log(props)
   if(props.isLogged){
     return(
       <Header className="theNav">

@@ -14,15 +14,12 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    console.log("Más mágia", this.state.user)
+    
   }
 
   catchForGlobalState = (res) => {
-    console.log(res.data)
     let { user } = res.data
-    console.log("Sólo para no errar", user)
     this.setState({user, logged: true})
-    console.log("es aquí donde hago magia")
   }
 
   render() {

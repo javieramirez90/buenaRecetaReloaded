@@ -29,12 +29,12 @@ router.get('/allRecipes', (req, res, next) => {
     })
 })
 
-router.post('/createRecipe',isAuth, (req, res, next) => { 
-  console.log(req.body.recipe)
+router.post('/createRecipe',isAuth, (req, res, next) => {
   Recipe.create({...req.body.recipe, owner: req.user})
     .then(newRecipe => {
-      let {id} = req.user
-      User.findByIdAndUpdate(id, {$push:{ "recipes.$.OwnCreation": newRecipe}}, {new:true})
+      let {_id} = req.user
+      User.findByIdAndUpdate(_id, {$push:{ recipes: {ownCreation: newRecipe}}}, {new:true})
+        .then(user => res.status(200).json({message: "Receta creada con éxito", newRecipe, user}))
       res.status(200).json({message: "Receta creada con éxito", newRecipe})
     })
     .catch(e => console.log(e))

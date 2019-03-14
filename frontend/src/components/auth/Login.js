@@ -13,13 +13,12 @@ class NormalLoginForm extends Component {
   }
 
   componentDidMount(){
-    console.log(this.props)
+  
   }
   
   handleChange = e => {
     let { auth } = this.state
     auth[e.target.name] = e.target.value
-    console.log(auth)
     this.setState({ auth })
   }
 
@@ -27,10 +26,8 @@ class NormalLoginForm extends Component {
     e.preventDefault();
     let url = "http://localhost:3000/login"
     let {auth} = this.state
-    console.log(auth)
     axios.post(url, auth, {withCredentials: true})
     .then(data => {
-      console.log("The data I send", data)
       this.props.catched(data)
       this.props.history.push('/profile')
     })
