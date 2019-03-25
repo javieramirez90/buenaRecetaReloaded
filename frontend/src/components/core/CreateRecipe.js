@@ -34,45 +34,70 @@ export default class CreateRecipe extends Component {
   }
 
   handleImageChange = e => {
-    let { photoURL } = this.state
+    let { photoURL, recipe } = this.state
     photoURL = e.target.files[0]
-		this.setState({photoURL})
+    recipe["photoURL"] = photoURL
+		this.setState({photoURL, recipe})
 	}
 
   sendToServer = e => {
     e.preventDefault()
     let url = "http://localhost:3000/createRecipe"
     let { photoURL, recipe } = this.state 
-
-    axios({
-      method: 'post',
-      url: url,
-      data: {
-        recipe: recipe,
-      },
-        withCredentials:true
-      
+    let formData = new FormData()
+    for (let key in recipe) {
+      formData.append(key, recipe[key])
+    }
+    fetch(url, {
+      method: 'POST',
+      credentials: 'include',
+      body: formData
     })
-      .then(res => {
-        let formData = new FormData()
-        formData.append("picture", photoURL)
-        formData.append("id", res.data.newRecipe._id)
-        let serviceUpload = axios.create({url:"http://localhost:3000/updateRecipe", withCredentials: true})
-        return serviceUpload.post('http://localhost:3000/updateRecipe', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          }
-        })
-        .then(res => {
-          console.log("Éste es el resultado de dos operaciones: ", res )
-        })
-        .catch(e => console.log(e))
+  }
+
+       
+
+  //   axios({
+  //     method: 'post',
+  //     url: url,
+  //     data: {
+  //       recipe: recipe,
+  //     },
+  //       withCredentials:true
+      
+  //   })
+  //     .then(res => {
+  //       let formData = new FormData()
+  //       formData.append("picture", photoURL)
+  //       formData.append("id", res.data.newRecipe._id)
+  //       let serviceUpload = axios.create({url:"http://localhost:3000/updateRecipe", withCredentials: true})
+  //       return serviceUpload.post('http://localhost:3000/updateRecipe', formData, {
+  //         headers: {
+  //           'Content-Type': 'multipart/form-data',
+  //         }
+  //       })
+  //       .then(res => {
+  //         console.log("Éste es el resultado de dos operaciones: ", res )
+  //       })
+  //       .catch(e => console.log(e))
         
-      })
-      .catch(e => console.log(e))
+  //     })
+  //     .catch(e => console.log(e))
 
+  //     fetch()
 
-  } 
+  //     // const { info } = this.state
+  //     // for (let key in info) {
+  //     //   formData.append(key)
+  //     // }
+  //     // fetch('link', {
+  //     //   method: 'POST',
+  //     //   headers: {
+  //     //     withCredentials: true
+  //     //   },
+  //     //   body: formData
+  //     // })
+  // } 
 
   render() {
     
